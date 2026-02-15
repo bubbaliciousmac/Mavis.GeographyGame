@@ -1,16 +1,361 @@
 <html>
 <style>
-    .hover {
+    #NZ,
+    #BR {
         /* transform: scale(1.3);
         transform-origin: center;
         transform-box: fill-box; */
         fill: chartreuse;
-        cursor: pointer;
+
+    }
+
+    #AD,
+    #AG {
+        fill: aqua;
+    }
+
+    #AE,
+    #AL {
+        fill: aquamarine
+    }
+
+    #AF,
+    #AR {
+        fill: magenta
+    }
+
+    #AM,
+    #AT {
+        fill: chocolate;
+    }
+
+    #AO,
+    #AU {
+        fill: coral;
+    }
+
+    #AS,
+    #AW {
+        fill: blueviolet;
+    }
+
+    #AX,
+    #AZ {
+        fill: blue;
+    }
+
+    #BA,
+    #BB {
+        fill: darkgoldenrod;
+    }
+
+    #BD,
+    #BE {
+        fill: cornflowerblue;
+    }
+
+    #BF,
+    #BG {
+        fill: maroon
+    }
+
+    #BH,
+    #BI {
+        fill: blanchedalmond;
     }
 
     svg path:hover {
-        filter: brightness(1.4);
+        filter: brightness(1.2);
+        /* transform: scale(1.2);
+      transform-origin: center;
+      transform-box: fill-box; */
+    }
+
+
+    svg path {
         cursor: pointer;
+    }
+
+    #BJ,
+    #BL {
+        fill: crimson;
+    }
+
+    #BN,
+    #BO {
+        fill: darkmagenta;
+    }
+
+    #BM,
+    #BQ {
+        fill: darkgreen;
+    }
+
+    #BS,
+    #BT {
+        fill: darkcyan;
+    }
+
+    #BV,
+    #BW {
+        fill: limegreen;
+    }
+
+    #BY,
+    #BZ {
+        fill: brown;
+    }
+
+    #CA,
+    #CG {
+        fill: burlywood;
+    }
+
+    #CD,
+    #CC {
+        fill: cadetblue;
+    }
+
+    #CF,
+    #CH {
+        fill: darkgray;
+    }
+
+    #CI,
+    #CK {
+        fill: darkkhaki;
+    }
+
+    #CL,
+    #CM {
+        fill: darkolivegreen;
+    }
+
+    #CN,
+    #CO {
+        fill: darkorange;
+    }
+
+    #CR,
+    #CU {
+        fill: darkorchid;
+    }
+
+    #CV,
+    #CW {
+        fill: darkred;
+    }
+
+    #CX,
+    #CY {
+        fill: darksalmon;
+    }
+
+    #CZ,
+    #DJ {
+        fill: darkseagreen;
+    }
+
+    #DE,
+    #DK {
+        fill: darkslateblue;
+    }
+
+    #DM,
+    #DO {
+        fill: darkslategray;
+    }
+
+    #DZ,
+    #EC {
+        fill: darkturquoise;
+    }
+
+    #EG,
+    #EE {
+        fill: darkviolet;
+    }
+
+    #EH,
+    #ER {
+        fill: deeppink;
+    }
+
+    #ES,
+    #ET {
+        fill: deepskyblue;
+    }
+
+    #FI,
+    #FJ {
+        fill: dimgray;
+    }
+
+    #FK,
+    #FM {
+        fill: dodgerblue;
+    }
+
+    #FO,
+    #FR {
+        fill: firebrick;
+    }
+
+    #GA,
+    #GB {
+        fill: forestgreen;
+    }
+
+    #GE,
+    #GD {
+        fill: fuchsia;
+    }
+
+    #GF,
+    #GH {
+        fill: gold;
+    }
+
+    #GI,
+    #GL {
+        fill: goldenrod;
+    }
+
+    #GM,
+    #GN {
+        fill: gray;
+    }
+
+    #GO,
+    #GP {
+        fill: green;
+    }
+
+    #GS,
+    #GT {
+        fill: greenyellow;
+    }
+
+    #GU,
+    #GW {
+        fill: hotpink;
+    }
+
+    #GY,
+    #HK {
+        fill: indianred;
+    }
+
+    #HM,
+    #HN {
+        fill: indigo;
+    }
+
+    #HR,
+    #HT {
+        fill: khaki;
+    }
+
+    #HU,
+    #ID {
+        fill: rgb(172, 224, 120);
+        /* filter: contrast(1.8 ); */
+        /* filter: brightness(0.8); */
+    }
+
+    #IE,
+    #IL {
+        fill: lightblue;
+    }
+
+    #IM,
+    #IN {
+        fill: lightcoral;
+    }
+
+    #IO,
+    #IQ {
+        fill: lightseagreen;
+    }
+
+    #IR,
+    #IS {
+        fill: lightskyblue;
+    }
+
+    #IT,
+    #JE {
+        fill: mediumaquamarine;
+    }
+
+    #JM,
+    #JO {
+        fill: lightgray;
+    }
+
+    #JP,
+    #JU {
+        fill: lightgreen;
+    }
+
+    #KG,
+    #KE {
+        fill: lightpink;
+    }
+
+    #KH,
+    #KI {
+        fill: lightsalmon;
+    }
+
+    #KH,
+    #KM {
+        fill: lightslategray;
+    }
+
+    #KP,
+    #KR {
+        fill: lightsteelblue;
+    }
+
+    #XK,
+    #KW {
+        fill: midnightblue
+    }
+
+    #KY,
+    #KZ {
+        fill: lime;
+    }
+
+    #LA,
+    #LB {
+        fill: mediumblue;
+    }
+
+    #LC,
+    #LI {
+        fill: mediumorchid;
+    }
+
+    #LK,
+    #LR {
+        fill: mediumpurple;
+    }
+
+    #LS,
+    #LT {
+        fill: mediumseagreen;
+    }
+
+    #LU,
+    #LV {
+        fill: mediumslateblue;
+    }
+
+    #LY,
+    #MA {
+        fill: mediumspringgreen;
     }
 </style>
 
