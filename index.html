@@ -1,8 +1,143 @@
+<!doctype html>
 <html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js"
     integrity="sha512-kkMt8UThSmWcdXLYFaGZ/U6vyWSNLZMUWQ5SMeF80pGqrEkH5ei9D/3MbVQpB8p7D5C3A4vlX7BpsWTT2BfB6A=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
+
+    .score-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 860px;
+      background: linear-gradient(135deg, #0d0d1a 0%, #111128 100%);
+      border: 1px solid #2a2a5a;
+      border-top: 3px solid #00f0ff;
+      border-radius: 4px;
+      padding: 0 36px;
+      height: 72px;
+      position: relative;
+      box-shadow:
+        0 0 30px rgba(0, 240, 255, 0.08),
+        0 0 60px rgba(0, 240, 255, 0.04),
+        inset 0 1px 0 rgba(0, 240, 255, 0.1);
+    }
+
+    /* Scanline overlay */
+    .score-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.08) 2px,
+        rgba(0, 0, 0, 0.08) 4px
+      );
+      pointer-events: none;
+      border-radius: 4px;
+    }
+
+    /* Corner accents */
+    .score-panel::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ff2d78, transparent);
+    }
+
+    .round-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      min-width: 90px;
+    }
+
+    .round-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #555588;
+      text-transform: uppercase;
+    }
+
+    .round-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: #00f0ff;
+      text-shadow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 40px rgba(0, 240, 255, 0.3);
+      line-height: 1;
+      letter-spacing: 2px;
+    }
+
+    .divider {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, transparent, #2a2a5a, transparent);
+    }
+
+    .player {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .player-name {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 15px;
+      color: #aaaacc;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .player-score {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .player-one .player-score {
+      color: #00f0ff;
+      text-shadow: 0 0 16px rgba(0, 240, 255, 0.5);
+    }
+
+    .player-two .player-score {
+      color: #ff2d78;
+      text-shadow: 0 0 16px rgba(255, 45, 120, 0.5);
+    }
+
+    .vs-chip {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      color: #ff2d78;
+      letter-spacing: 2px;
+      padding: 4px 10px;
+      border: 1px solid rgba(255, 45, 120, 0.3);
+      background: rgba(255, 45, 120, 0.06);
+      border-radius: 2px;
+    }
+
+    /* Pulse animation on scores */
+    @keyframes scorePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .score-updated {
+      animation: scorePulse 0.4s ease-in-out;
+    }
     .modal-overlay {
         position: fixed;
         inset: 0;
@@ -667,6 +802,33 @@
         <h3>Countries found: <span id="countriesFound"></span></h3>
         <img width="120" id="countryFlag" />
     </div>
+    
+  <div class="score-panel">
+    <div class="round-badge">
+      <span class="round-label">Round</span>
+      <span class="round-number" id="round-number">1</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="player player-one">
+      <span class="player-name" id="p1-name">Player One</span>
+      <span class="player-score" id="p1-score">0</span>
+    </div>
+
+    <div class="vs-chip">VS</div>
+
+    <div class="player player-two">
+      <span class="player-score" id="p2-score">0</span>
+      <span class="player-name" id="p2-name">Player Two</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Placeholder to balance flex layout -->
+    <div style="min-width: 90px;"></div>
+  </div>
+
     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <svg onclick="togglePanel()" id="info-tab" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1476,11 +1638,11 @@
             </div>
         </div>
     </div>
-       
+<script type="text/javascript" src="./script.js"></script>       
 </body>
 
 
-<script type="text/javascript" src="./script.js"></script>
+
 
 
 </html>
