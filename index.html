@@ -50,6 +50,31 @@
   z-index: 1;
 }
 
+#loseTitle {
+  color: var(--pink);
+  text-shadow: 0 0 20px rgba(255, 45, 120, 0.5), 0 0 40px rgba(255, 45, 120, 0.2);
+}
+
+#loseMessage {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+  letter-spacing: 1px;
+  line-height: 1.8;
+  padding: 4px 0;
+  position: relative;
+  z-index: 1;
+}
+
+#retryBtn {
+  background: linear-gradient(135deg, var(--pink), #aa1144);
+  color: #050510;
+}
+
+#retryBtn:hover {
+  box-shadow: 0 0 20px rgba(255, 45, 120, 0.4), 0 0 40px rgba(255, 45, 120, 0.15);
+}
+
 #restartBtn {
   background: linear-gradient(135deg, var(--gold), #cc9900);
   color: #050510;
@@ -2137,6 +2162,19 @@
         </div>
         <div class="modal-footer">
             <button id="restartBtn">Play Again</button>
+        </div>
+    </div>
+</div>
+<div id="loseOverlay" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 id="loseTitle">Defeated!</h2>
+        </div>
+        <div class="modal-body">
+            <p id="loseMessage"></p>
+        </div>
+        <div class="modal-footer">
+            <button id="retryBtn">Try Again</button>
         </div>
     </div>
 </div>
